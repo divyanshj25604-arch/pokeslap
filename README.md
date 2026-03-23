@@ -160,8 +160,15 @@ Main App grid
 pokeslap/
 │
 ├── index.html          # Single entry point — all views live here
-├── style.css           # Global styles, layout, responsive
 ├── README.md           # Project documentation
+├── css/
+│   ├── main.css        # Global styles, layout, responsive, variables
+│   ├── splash.css      # Splash screen styles
+│   ├── navbar.css      # Navbar styles
+│   ├── search.css      # Search bar + glassmorphism panel + filter pills
+│   ├── cards.css       # Card front face styles
+│   ├── flip.css        # Card flip animation
+│   └── favorites.css   # Favorites view styles
 │
 └── js/
     ├── api.js          # All fetch calls to PokéAPI
