@@ -171,6 +171,12 @@ pokeslap/
 │   └── favorites.css   # Favorites view styles
 │
 └── js/
+    ├── components/
+    │   ├── card.js         # Creates a single Pokémon card
+    │   ├── navbar.js       # Creates navbar HTML
+    │   ├── searchBar.js    # Creates search + filter pills HTML
+    │   └── favoriteCard.js # Creates a favorites view card
+    │
     ├── api.js          # All fetch calls to PokéAPI
     ├── render.js       # DOM rendering — cards, grid, favorites view
     ├── filters.js      # Search, filter, sort using HOFs only
