@@ -1,0 +1,81 @@
+.card-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    color: var(--text-color);
+    width: 100%;
+    max-width: 280px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-header h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: capitalize;
+    color: var(--text-color);
+}
+
+.pokemon-id {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+.pokemon-hp {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.card-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: 0.8rem auto;
+}
+
+.card-container p {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    margin: 0.2rem 0;
+}
+
+.stat-bar {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-bar span {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.bar {
+    background-color: var(--border-color);
+    border-radius: 4px;
+    height: 6px;
+    width: 100%;
+}
+
+.bar-fill {
+    background-color: var(--primary-color);
+    height: 100%;
+    border-radius: 4px;
+}
