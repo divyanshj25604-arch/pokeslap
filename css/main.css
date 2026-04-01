@@ -1,4 +1,4 @@
-/* main.css */
+/* main.css
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 @import './splash.css';
 @import './navbar.css';
@@ -30,4 +30,43 @@ body {
     font-family: 'nunito', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
+} */
+
+
+.hidden {
+    display: none;
+}
+
+#pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    color: var(--text-color);
+}
+
+.bar {
+    background-color: var(--border-color);
+    border-radius: 4px;
+    height: 9px;
+    margin: 4px 0;
+}
+
+.bar-fill {
+    background-color: var(--primary-color);
+    height: 100%;
+    border-radius: 4px;
+}
+
+#loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
 }

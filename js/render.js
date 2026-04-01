@@ -24,8 +24,10 @@ export async function renderPokemonGrid(container, limit = 30, offset = 0) {
         pokemonDetails.forEach((_, index) => {
             const pokemonData = {
                 ...pokemonDetails[index],
-                description: pokemonSpeciesDetails[index]?.description
+                description: pokemonSpeciesDetails[index].description
             };
+            // console.log(pokemonSpeciesDetails[index].description);
+            console.log(pokemonData);
             const card = createPokemonCard(pokemonData);
             container.insertAdjacentHTML('beforeend', card);
         });

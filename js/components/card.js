@@ -5,7 +5,7 @@
  */
 
 
-export async function createPokemonCard(pokemon, speciesDetails) {
+export function createPokemonCard(pokemon) {
     return `<div class="card-container">
     <div class="card-inner">
         <div class="card-front">
@@ -36,7 +36,7 @@ export async function createPokemonCard(pokemon, speciesDetails) {
         </div>
         <div class="card-back">
             <h3>Details</h3>
-            <p>${speciesDetails}</p>
+            <p>&quot;${pokemon.description}&quot;</p>
         </div>
     </div>
 </div>`;    
