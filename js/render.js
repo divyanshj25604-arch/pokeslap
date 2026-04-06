@@ -1,6 +1,8 @@
 import { fetchPokemonList, fetchPokemonDetails, fetchPokemonSpeciesDetails } from "./api.js";
 import { createPokemonCard } from "./components/card.js";
 
+let allPokemon = [];
+
 /**
  * Renders a grid of Pokémon cards in the specified container.
  * @param {HTMLElement} container - The DOM element where the Pokémon cards will be rendered.
@@ -21,16 +23,14 @@ export async function renderPokemonGrid(container, limit = 30, offset = 0) {
         const pokemonSpeciesDetailsPromises = pokemonDetails.map(pokemon => fetchPokemonSpeciesDetails(pokemon.id));
         const pokemonSpeciesDetails = await Promise.all(pokemonSpeciesDetailsPromises);
 
-        pokemonDetails.forEach((_, index) => {
-            const pokemonData = {
-                ...pokemonDetails[index],
-                description: pokemonSpeciesDetails[index].description
-            };
-            // console.log(pokemonSpeciesDetails[index].description);
-            console.log(pokemonData);
-            const card = createPokemonCard(pokemonData);
-            container.insertAdjacentHTML('beforeend', card);
-        });
+        allPokemon = pokemonDetails.map((_, index) => ({
+            ...pokemonDetails[index],
+            description: pokemonSpeciesDetails[index]?.description
+        }));
+
+        renderCards(container, allPokemon);
+        // console.log(pokemonSpeciesDetails[index].description);
+        // console.log(pokemonData);
         loading.classList.add('hidden'); // hide loading after done
     } catch (error) {
         // after cards are rendered:
@@ -38,4 +38,25 @@ export async function renderPokemonGrid(container, limit = 30, offset = 0) {
         console.error('Error rendering Pokémon grid:', error);
         container.innerHTML = '<p class="error">Failed to load Pokémon data. Please try again later.</p>';
     }
+}
+
+/**
+ * Renders a list of Pokémon cards into a container.
+ * @param {HTMLElement} container - The DOM element to render cards into.
+ * @param {Array} list - Array of Pokémon data objects.
+ */
+export function renderCards(container, list) {
+    container.innerHTML = '';
+    list.forEach(pokemon => {
+        const card = createPokemonCard(pokemon);
+        container.insertAdjacentHTML('beforeend', card);
+    });
+}
+
+/**
+ * Returns the full list of fetched Pokémon.
+ * @returns {Array} - All fetched Pokémon data.
+ */
+export function getAllPokemon() {
+    return allPokemon;
 }

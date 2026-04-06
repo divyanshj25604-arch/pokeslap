@@ -44,7 +44,6 @@
 
 #start-app:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px var(--primary-color);
 }
 
 /* Pokéball */
@@ -92,5 +91,4 @@
 
 #start-app:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px var(--primary-color), 0 0 50px var(--primary-color);
 }
