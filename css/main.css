@@ -70,12 +70,29 @@ body {
     font-size: 1.2rem;
 }
 
-/* Responsive breakpoints */
+body.dark-mode {
+    --background-color: #ffffff;
+    --card-background: #f0f0f0;
+    --text-color: #1a1a2e;
+    --border-color: #cccccc;
+    --primary-color: #ff5100;
+}
+
+body, html {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+#main {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 @media (max-width: 768px) {
     #pokemon-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        padding: 1rem;
+        gap: 0.8rem;
+        padding: 0.8rem;
     }
 
     .card-container {
