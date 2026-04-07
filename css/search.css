@@ -4,27 +4,24 @@
     background-color: var(--background-color);
     padding: 0.8rem 1.5rem 0.6rem;
     width: 100%;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1.5px solid var(--border-color);
 }
 
-/* NEW CONTAINER */
 #top-controls {
     display: flex;
     align-items: center;
     gap: 0.6rem;
     width: 100%;
-    flex-wrap: wrap; /* prevents breaking on small screens */
+    flex-wrap: wrap; 
     margin-bottom: 0.8rem;
 }
 
-/* LABELS */
 .control-label {
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--text-color);
 }
 
-/* FLEX RATIO SYSTEM (better than fixed %) */
 #search-input {
     flex: 5;
     min-width: 180px;
@@ -39,11 +36,12 @@
 }
 
 #sort-select {
-    flex: 3;
+    flex: 2;
     min-width: 140px;
     padding: 0.8rem 1rem;
     font-size: 1rem;
     font-family: inherit;
+    font-weight: 700;
     border-radius: var(--border-radius);
     border: 2px solid var(--border-color);
     background-color: var(--card-background);
@@ -51,11 +49,12 @@
 }
 
 #sort-order {
-    flex: 2;
+    flex: 1;
     min-width: 120px;
     padding: 0.8rem 1rem;
     font-size: 1rem;
     font-family: inherit;
+    font-weight: 700;
     border-radius: var(--border-radius);
     border: 2px solid var(--border-color);
     background-color: var(--card-background);
@@ -67,6 +66,7 @@
 #sort-select:focus,
 #sort-order:focus {
     border-color: var(--primary-color);
+    outline: none;
 }
 
 /* TYPE FILTERS (unchanged but cleaned slightly) */
@@ -76,6 +76,8 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .type-btn {

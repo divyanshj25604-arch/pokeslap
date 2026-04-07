@@ -1,7 +1,10 @@
 import { splashScreen, showApp, showFavourites } from "./navigation.js";
 import { createNavbar } from "./components/navbar.js";
-import { searchPokemon, filterByType, sortPokemon } from "./filters.js";
+import { searchPokemon, filterByType, sortPokemonByAttribute } from "./filters.js";
 import { renderCards, getAllPokemon, renderPokemonGrid } from "./render.js";
+
+let currentOffset = 0;
+let limit = 300;
 
 const pokemonGridContainer = document.getElementById("pokemon-grid");
 let currentSearchTerm = '';
@@ -16,7 +19,7 @@ function applyFilters() {
     }
 
     result = filterByType(result, currentTypeFilter);
-    result = sortPokemon(result, currentSortKey);
+    result = sortPokemonByAttribute(result, currentSortKey, document.getElementById('sort-order').value);
     renderCards(pokemonGridContainer, result);
 }
 
@@ -27,10 +30,23 @@ splashScreen();
 document.getElementById('start-app').addEventListener('click', () => {
     showApp();
     document.getElementById('navbar').innerHTML = createNavbar();
-    renderPokemonGrid(pokemonGridContainer, 501);
+    renderPokemonGrid(pokemonGridContainer, limit, currentOffset);
+
+    document.getElementById('load-more-btn').addEventListener('click', async () => {
+        currentOffset += limit;
+        limit = 200;
+
+        await renderPokemonGrid(pokemonGridContainer, limit, currentOffset);
+
+        applyFilters();
+    });
 
     document.getElementById('search-input').addEventListener('input', (e) => {
         currentSearchTerm = e.target.value.trim();
+        applyFilters();
+    });
+
+    document.getElementById('sort-order').addEventListener('change', () => {
         applyFilters();
     });
 

@@ -88,6 +88,30 @@ body, html {
     overflow-x: hidden;
 }
 
+#load-more-btn {
+    display: block;
+    margin: 1.5rem auto 2rem;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#load-more-btn:hover {
+    transform: translateY(-2px);
+    background-color: var(--hover-color);
+}
+
+#load-more-btn:active {
+    transform: translateY(0);
+}
+
 @media (max-width: 768px) {
     #pokemon-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -97,6 +121,11 @@ body, html {
 
     .card-container {
         max-width: 100%;
+    }
+    
+    #load-more-btn {
+        width: 90%;
+        padding: 1rem;
     }
 }
 

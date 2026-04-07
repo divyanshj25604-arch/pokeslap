@@ -17,15 +17,41 @@ export function filterByType(pokemonList, type) {
     return pokemonList.filter(pokemon => pokemon.types.includes(type));
 }
 
+// /**
+//  * Sorts Pokémon array by a given key.
+//  * @param {Array} pokemonList - Array of Pokémon objects
+//  * @param {string} key - Sort key: 'id', 'name', 'hp', 'attack', 'defense'
+//  * @returns {Array} - Sorted array
+//  */
+// export function sortPokemon(pokemonList, key) {
+//     return [...pokemonList].sort((a, b) => {
+//         if (key === 'name') return a.name.localeCompare(b.name);
+//         return a[key] - b[key];
+//     });
+// }
+
 /**
- * Sorts Pokémon array by a given key.
+ * sort order by hp, attack, defense
  * @param {Array} pokemonList - Array of Pokémon objects
- * @param {string} key - Sort key: 'id', 'name', 'hp', 'attack', 'defense'
+ * @param {string} key - Sort key: 'hp', 'attack', 'defense'
+ * @param {string} order - Sort order: 'asc' or 'desc'
  * @returns {Array} - Sorted array
  */
-export function sortPokemon(pokemonList, key) {
+export function sortPokemonByAttribute(pokemonList, key, order) {
     return [...pokemonList].sort((a, b) => {
-        if (key === 'name') return a.name.localeCompare(b.name);
-        return a[key] - b[key];
+        const aValue = a[key];
+        const bValue = b[key];
+
+        // handle string sorting (name)
+        if (typeof aValue === 'string') {
+            return order === 'asc'
+                ? aValue.localeCompare(bValue)
+                : bValue.localeCompare(aValue);
+        }
+
+        // handle numbers
+        return order === 'asc'
+            ? aValue - bValue
+            : bValue - aValue;
     });
 }

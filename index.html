@@ -18,16 +18,16 @@
     </section>
     <nav id="navbar" class="hidden"></nav>
     <section id="main" class="hidden">
-        <div id="loading">Loading Pokémon...</div>
+        <div id="loading" class="hidden">Loading Pokémon...</div>
         <div id="search-filter-wrapper">
             <div id="top-controls">
                 <input type="text" id="search-input" placeholder="Search Pokémon..." />
                 <label for="sort-select" class="control-label">Sort:</label>
                 <select id="sort-select">
                     <option value="id">ID</option>
-                    <option value="name">Name A-Z</option>
+                    <option value="name">Name</option>
                     <option value="hp">HP</option>
-                    <option value="attack">Strength</option>
+                    <option value="attack">Attack</option>
                     <option value="defense">Defense</option>
                 </select>
                 <label for="sort-order" class="control-label">Order:</label>
@@ -52,7 +52,9 @@
                 <button class="type-btn" data-type="ghost">Ghost</button>
                 <button class="type-btn" data-type="dragon">Dragon</button>
             </div>
-            <div id="pokemon-grid"></div>
+        </div>
+        <div id="pokemon-grid"></div>
+        <button id="load-more-btn" class="hidden">Load More</button>
     </section>
     <section id="favorites" class="hidden"></section>
     <script type="module" src="js/main.js"></script>
