@@ -12,6 +12,36 @@
     margin-bottom: 0.6rem;
 }
 
+#sort-container {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+#sort-container label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#sort-select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+#sort-select:focus {
+    border-color: var(--primary-color);
+}
+
 #search-input {
     width: 100%;
     padding: 0.8rem 1.2rem;
