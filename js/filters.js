@@ -16,3 +16,16 @@ export function filterByType(pokemonList, type) {
     if (type === 'all') return pokemonList;
     return pokemonList.filter(pokemon => pokemon.types.includes(type));
 }
+
+/**
+ * Sorts Pokémon array by a given key.
+ * @param {Array} pokemonList - Array of Pokémon objects
+ * @param {string} key - Sort key: 'id', 'name', 'hp', 'attack', 'defense'
+ * @returns {Array} - Sorted array
+ */
+export function sortPokemon(pokemonList, key) {
+    return [...pokemonList].sort((a, b) => {
+        if (key === 'name') return a.name.localeCompare(b.name);
+        return a[key] - b[key];
+    });
+}
