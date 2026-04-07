@@ -7,44 +7,27 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-#search-container {
-    width: 100%;
-    margin-bottom: 0.6rem;
-}
-
-#sort-container {
+/* NEW CONTAINER */
+#top-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.6rem;
+    width: 100%;
+    flex-wrap: wrap; /* prevents breaking on small screens */
     margin-bottom: 0.8rem;
 }
 
-#sort-container label {
-    font-size: 0.9rem;
+/* LABELS */
+.control-label {
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-color);
 }
 
-#sort-select {
-    width: 50%;
-    padding: 0.8rem 1rem;
-    font-size: 1rem;
-    font-family: inherit;
-    border-radius: var(--border-radius);
-    border: 2px solid var(--border-color);
-    background-color: var(--card-background);
-    color: var(--text-color);
-    outline: none;
-    transition: border 0.2s ease;
-}
-
-#sort-select:focus {
-    border-color: var(--primary-color);
-}
-
+/* FLEX RATIO SYSTEM (better than fixed %) */
 #search-input {
-    width: 100%;
+    flex: 5;
+    min-width: 180px;
     padding: 0.8rem 1.2rem;
     font-size: 1rem;
     font-family: inherit;
@@ -53,15 +36,40 @@
     background-color: var(--card-background);
     color: var(--text-color);
     outline: none;
-    transition: border 0.2s ease;
 }
 
-#search-input:focus {
-    border-color: var(--primary-color);
+#sort-select {
+    flex: 3;
+    min-width: 140px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
     background-color: var(--card-background);
     color: var(--text-color);
 }
 
+#sort-order {
+    flex: 2;
+    min-width: 120px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+/* FOCUS STATES */
+#search-input:focus,
+#sort-select:focus,
+#sort-order:focus {
+    border-color: var(--primary-color);
+}
+
+/* TYPE FILTERS (unchanged but cleaned slightly) */
 #type-filters {
     display: flex;
     justify-content: center;
@@ -92,4 +100,19 @@
     background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: var(--background-color);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    #top-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #search-input,
+    #sort-select,
+    #sort-order {
+        width: 100%;
+        flex: unset;
+    }
 }

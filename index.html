@@ -20,17 +20,20 @@
     <section id="main" class="hidden">
         <div id="loading">Loading Pokémon...</div>
         <div id="search-filter-wrapper">
-            <div id="search-container">
+            <div id="top-controls">
                 <input type="text" id="search-input" placeholder="Search Pokémon..." />
-            </div>
-            <div id="sort-container">
-                <label for="sort-select">Sort by:</label>
+                <label for="sort-select" class="control-label">Sort:</label>
                 <select id="sort-select">
                     <option value="id">ID</option>
                     <option value="name">Name A-Z</option>
                     <option value="hp">HP</option>
                     <option value="attack">Strength</option>
                     <option value="defense">Defense</option>
+                </select>
+                <label for="sort-order" class="control-label">Order:</label>
+                <select id="sort-order">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
                 </select>
             </div>
             <div id="type-filters">
@@ -49,8 +52,7 @@
                 <button class="type-btn" data-type="ghost">Ghost</button>
                 <button class="type-btn" data-type="dragon">Dragon</button>
             </div>
-        </div>
-        <div id="pokemon-grid"></div>
+            <div id="pokemon-grid"></div>
     </section>
     <section id="favorites" class="hidden"></section>
     <script type="module" src="js/main.js"></script>
