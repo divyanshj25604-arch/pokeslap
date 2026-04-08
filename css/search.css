@@ -35,6 +35,12 @@
     outline: none;
 }
 
+#search-input:focus {
+    border-color: var(--primary-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
 #sort-select {
     flex: 2;
     min-width: 140px;
@@ -61,8 +67,6 @@
     color: var(--text-color);
 }
 
-/* FOCUS STATES */
-#search-input:focus,
 #sort-select:focus,
 #sort-order:focus {
     border-color: var(--primary-color);
@@ -104,7 +108,6 @@
     color: var(--background-color);
 }
 
-/* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
     #top-controls {
         flex-direction: column;
