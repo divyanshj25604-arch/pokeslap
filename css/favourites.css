@@ -1,0 +1,103 @@
+#favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    justify-items: center;
+}
+
+#search-filter-wrapper-fav {
+    position: sticky;
+    z-index: 99;
+    background-color: var(--background-color);
+    padding: 0.8rem 1.5rem 0.6rem;
+    width: 100%;
+    border-bottom: 1.5px solid var(--border-color);
+}
+
+#top-controls-fav {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+}
+
+#search-input-fav {
+    flex: 5;
+    min-width: 180px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+    outline: none;
+}
+
+#search-input-fav:focus {
+    border-color: var(--primary-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+#sort-select-fav {
+    flex: 2;
+    min-width: 140px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 700;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+#sort-order-fav {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 700;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+#sort-select-fav:focus,
+#sort-order-fav:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#favorites-grid {
+    margin-top: 1rem;
+}
+
+#type-filters-fav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.card-back .fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 3rem;
+}
+
+#top-controls-fav .control-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+}

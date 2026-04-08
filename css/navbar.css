@@ -15,6 +15,7 @@ nav#navbar {
     font-weight: 800;
     color: var(--primary-color);
     letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .nav-links {

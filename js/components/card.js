@@ -1,3 +1,4 @@
+import { isFavourite } from "../storage.js";
 /**
  * Creates an HTML card for a given Pokémon.
  * @param {Object} pokemon - An object representing a Pokémon with properties like id, name, image, etc.
@@ -26,7 +27,7 @@ const TYPE_COLORS = {
 };
 
 export function createPokemonCard(pokemon) {
-    return `<div class="card-container">
+    return `<div class="card-container ${isFavourite(pokemon.id) ? 'favourited' : ''}">
     <div class="card-inner">
         <div class="card-front">
             <div class="card-header">
@@ -76,6 +77,9 @@ export function createPokemonCard(pokemon) {
         <div class="card-back">
             <h3>Details</h3>
             <p>&quot;${pokemon.description}&quot;</p>
+            <button class="fav-btn" data-id="${pokemon.id}">
+                ${isFavourite(pokemon.id) ? '★' : '☆'}
+            </button>
         </div>
     </div>
 </div>`;

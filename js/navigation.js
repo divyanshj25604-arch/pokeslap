@@ -1,3 +1,5 @@
+import { createNavbar } from "./components/navbar.js";
+
 /**
  * This file contains functions to navigate between different views of the application.
  * Each function manipulates the DOM to show or hide specific sections based on the user's interaction.
@@ -19,6 +21,7 @@ export function showApp() {
     document.getElementById('favorites').classList.add('hidden');
     document.getElementById('navbar').classList.remove('hidden');
     document.getElementById('main').classList.remove('hidden');
+    document.getElementById('navbar').innerHTML = createNavbar(false);
 }
 
 export function showFavourites() {
@@ -26,4 +29,5 @@ export function showFavourites() {
     document.getElementById('favorites').classList.remove('hidden');
     document.getElementById('navbar').classList.remove('hidden');
     document.getElementById('main').classList.add('hidden');
+    document.getElementById('navbar').innerHTML = createNavbar(true);
 }

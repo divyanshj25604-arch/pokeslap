@@ -1,7 +1,110 @@
 import { splashScreen, showApp, showFavourites } from "./navigation.js";
-import { createNavbar } from "./components/navbar.js";
 import { searchPokemon, filterByType, sortPokemonByAttribute } from "./filters.js";
 import { renderCards, getAllPokemon, renderPokemonGrid } from "./render.js";
+import { toggleFavourite, getFavourites } from "./storage.js";
+import { currentSearchTermFav, currentTypeFilterFav, currentSortKeyFav, applyFiltersFav, renderFavouritesPage } from "./favourites.js";
+
+function initNavbarEvents() {
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('click', (e) => {
+        const logo = e.target.closest('#logo');
+        if (logo) {
+            showApp();
+            applyFilters();
+            return;
+        }
+
+        const favoritesBtn = e.target.closest('#favorites-btn');
+        if (favoritesBtn) {
+            showFavourites();
+            renderFavouritesPage();
+            return;
+        }
+
+        const darkModeBtn = e.target.closest('#dark-mode-toggle');
+        if (darkModeBtn) {
+            document.body.classList.toggle('dark-mode');
+        }
+    });
+}
+
+function initFavoritesControls() {
+    const searchInputFav = document.getElementById('search-input-fav');
+    const sortSelectFav = document.getElementById('sort-select-fav');
+    const sortOrderFav = document.getElementById('sort-order-fav');
+    const typeFiltersFav = document.getElementById('type-filters-fav');
+    const favoritesGrid = document.getElementById('favorites-grid');
+
+    if (!searchInputFav || !sortSelectFav || !sortOrderFav || !typeFiltersFav || !favoritesGrid) return;
+
+    searchInputFav.addEventListener('input', (e) => {
+        currentSearchTermFav = e.target.value.trim();
+        applyFiltersFav();
+    });
+
+    sortSelectFav.addEventListener('change', (e) => {
+        currentSortKeyFav = e.target.value;
+        applyFiltersFav();
+    });
+
+    sortOrderFav.addEventListener('change', applyFiltersFav);
+
+    typeFiltersFav.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('type-btn')) return;
+        document.querySelectorAll('#type-filters-fav .type-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        currentTypeFilterFav = e.target.dataset.type;
+        applyFiltersFav();
+    });
+
+    favoritesGrid.addEventListener('mouseover', (e) => {
+        const card = e.target.closest('.card-container');
+        if (!card) return;
+        if (card.dataset.hoverActive) return;
+
+        card.dataset.hoverActive = true;
+        card.dataset.timeout = setTimeout(() => {
+            card.classList.add('flipped');
+        }, 500);
+    });
+
+    favoritesGrid.addEventListener('mouseout', (e) => {
+        const card = e.target.closest('.card-container');
+        if (!card) return;
+
+        const related = e.relatedTarget;
+        if (card.contains(related)) return;
+
+        clearTimeout(card.dataset.timeout);
+        delete card.dataset.hoverActive;
+        card.classList.remove('flipped');
+    });
+}
+
+document.getElementById('pokemon-grid').addEventListener('click', (e) => {
+    const btn = e.target.closest('.fav-btn');
+    if (!btn) return;
+
+    const id = Number(btn.dataset.id);
+    const pokemon = getAllPokemon().find(p => p.id === id);
+
+    toggleFavourite(pokemon);
+
+    applyFilters();
+});
+
+document.getElementById('favorites').addEventListener('click', (e) => {
+    const btn = e.target.closest('.fav-btn');
+    if (!btn) return;
+
+    const id = Number(btn.dataset.id);
+    const pokemon = getAllPokemon().find(p => p.id === id);
+
+    toggleFavourite(pokemon);
+
+    renderFavouritesPage();
+});
 
 let currentOffset = 0;
 let limit = 300;
@@ -29,7 +132,6 @@ splashScreen();
 // Set up event listener for the "Start PokeSlap" button on the splash screen
 document.getElementById('start-app').addEventListener('click', () => {
     showApp();
-    document.getElementById('navbar').innerHTML = createNavbar();
     renderPokemonGrid(pokemonGridContainer, limit, currentOffset);
 
     document.getElementById('load-more-btn').addEventListener('click', async () => {
@@ -40,6 +142,9 @@ document.getElementById('start-app').addEventListener('click', () => {
 
         applyFilters();
     });
+
+    initNavbarEvents();
+    initFavoritesControls();
 
     document.getElementById('search-input').addEventListener('input', (e) => {
         currentSearchTerm = e.target.value.trim();
