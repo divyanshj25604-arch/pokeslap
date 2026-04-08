@@ -128,6 +128,8 @@ function applyFilters() {
 
 // Initialize the application by showing the splash screen
 splashScreen();
+initNavbarEvents();
+initFavoritesControls();
 
 // Set up event listener for the "Start PokeSlap" button on the splash screen
 document.getElementById('start-app').addEventListener('click', () => {
@@ -142,9 +144,6 @@ document.getElementById('start-app').addEventListener('click', () => {
 
         applyFilters();
     });
-
-    initNavbarEvents();
-    initFavoritesControls();
 
     document.getElementById('search-input').addEventListener('input', (e) => {
         currentSearchTerm = e.target.value.trim();
@@ -193,9 +192,5 @@ document.getElementById('start-app').addEventListener('click', () => {
             btn.classList.add('active');
             applyFilters();
         });
-    });
-
-    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
     });
 });
